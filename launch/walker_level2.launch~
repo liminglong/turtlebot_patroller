@@ -1,0 +1,28 @@
+<launch>
+    <include file="$(find turtlebot_bringup)/launch/minimal.launch">
+    </include>
+	
+	<include file="$(find openni_launch)/launch/openni.launch">
+	</include>
+	
+	<node pkg="walker" type="avoid_runaway_sup.py" name="avoid_runaway_sup">
+    </node>
+
+	<node pkg="walker" type="look_wander_sup.py" name="look_wander_sup">
+    </node>
+
+	<node pkg="walker" type="look_node" name="look_node">
+    </node> 
+
+	<node pkg="walker" type="wander.py" name="wander">
+    </node>
+ 
+    <node pkg="walker" type="avoid.py" name="avoid">
+		<remap from="/cmd_vel_mux/input/teleop"	to="/avoid_cmd_vel"/>
+    </node>
+ 
+	<node pkg="walker" type="runaway_node" name="runaway_node">
+		<remap from="/cmd_vel_mux/input/teleop" to="/runaway_cmd_vel"/>
+    </node> 
+
+</launch>

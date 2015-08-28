@@ -1,0 +1,30 @@
+#include <ros/ros.h>
+
+#include <std_msgs/Bool.h>
+#include <geometry_msgs/Twist.h>
+#include <pcl_ros/point_cloud.h>
+#include <pcl/point_types.h>
+#include <boost/foreach.hpp>
+#include <iostream>
+#include <time.h>
+
+class Look
+{
+	public:
+		Look(int argc, char**argv);
+		~Look();		
+	private:
+        ros::NodeHandle n;
+		ros::Publisher pub1;
+		ros::Subscriber sub1;
+		
+		double min_y_; //The minimum y position of the points in the box
+ 		double max_y_; //The maximum y position of the points in the box
+  		double min_x_; //The minimum x position of the points in the box
+  		double max_x_; //The maximum x position of the points in the box
+  		double max_z_; //The maximum z position of the points in the box
+		
+		bool direction;
+
+		void cloudCB(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr & cloud);
+};
