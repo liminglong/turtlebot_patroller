@@ -1,2 +1,2 @@
 # turtlebot_patroller
-Turtlebot patroller for ROS based on Rodney Brooks' subsumption model.
+Turtlebot patroller based on ROS using Rodney Brooks' subsumption model.
